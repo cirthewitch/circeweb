@@ -84,7 +84,7 @@ export default async function Inicio() {
           </div>
           <div className="bento" style={{ gridAutoFlow: "dense" }}>
             {secciones.map((s, i) => {
-              const grande = i === 0 || i === 3;
+              const grande = i === 0;
               const lista = servicios.filter((x) => x.seccion === s.id);
               const usd = lista.map((x) => x.precio_usd).filter((v): v is number => Boolean(v));
               return (

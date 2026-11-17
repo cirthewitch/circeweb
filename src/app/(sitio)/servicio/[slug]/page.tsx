@@ -48,7 +48,7 @@ export default async function PaginaServicio({ params }: Props) {
         <div className="wrap" style={{ paddingTop: "clamp(28px, 5vw, 64px)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 16 }}>
           <nav aria-label="Ruta" style={{ fontSize: 13, color: "#A8A096", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}>
             <Link href="/catalogo" style={{ color: "#A8A096", textDecoration: "none" }}>Catálogo</Link><span aria-hidden="true">›</span>
-            <Link href={`/catalogo?seccion=${item.seccion}`} style={{ color: "#A8A096", textDecoration: "none" }}>{seccion?.nombre}</Link>
+            <Link href={`/catalogo/${item.seccion}`} style={{ color: "#A8A096", textDecoration: "none" }}>{seccion?.nombre}</Link>
           </nav>
           <span className="tag">{item.nivel}</span>
           <h1 className="h2x grad" style={{ fontSize: "clamp(52px, 8vw, 120px)", maxWidth: 1000 }}>{item.nombre}</h1>
@@ -160,7 +160,7 @@ export default async function PaginaServicio({ params }: Props) {
 
         {relacionados.length > 0 && (
           <section style={{ display: "flex", flexDirection: "column" }}>
-            <div className="shead rv"><span className="tag">{seccion?.nombre}</span>{titulo("También te puede", "servir")}<Link href={`/catalogo?seccion=${item.seccion}`} className="lnk">Ver toda la sección</Link></div>
+            <div className="shead rv"><span className="tag">{seccion?.nombre}</span>{titulo("También te puede", "servir")}<Link href={`/catalogo/${item.seccion}`} className="lnk">Ver toda la sección</Link></div>
             <div className="snap rv" style={{ gridAutoColumns: "minmax(min(250px, 70vw), 1fr)" }}>
               {relacionados.map((r) => (
                 <div key={r.id} className="tile" style={{ display: "flex", flexDirection: "column", borderRadius: 24 }}>

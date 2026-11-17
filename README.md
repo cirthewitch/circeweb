@@ -10,6 +10,7 @@ Web de Circe: catálogo de rituales con búsqueda inteligente, chatbot sin IA, s
 
 1. **Supabase** (proyecto nuevo):
    1. SQL Editor → pega y ejecuta `supabase/migrations/20261101000000_esquema_inicial.sql`.
+   1. SQL Editor → pega y ejecuta `supabase/migrations/20261117000000_cinco_secciones.sql` (deja las 5 secciones del catálogo).
    2. SQL Editor → pega y ejecuta `supabase/seed.sql` (secciones, 88 servicios, productos, preguntas del chatbot y textos).
    3. Authentication → Users → *Add user* con el correo y contraseña de la administradora.
    4. SQL Editor → `insert into public.admins (user_id) select id from auth.users where email = 'CORREO-DE-LA-ADMIN';`

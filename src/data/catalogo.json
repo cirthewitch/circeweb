@@ -223,7 +223,7 @@
   {
     "slug": "desespero-fuerte",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Desespero fuerte",
     "nivel": "Supremo",
     "motivo": "velas",
@@ -240,7 +240,7 @@
   {
     "slug": "mayor-compromiso",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Mayor compromiso",
     "nivel": "Supremo",
     "motivo": "amarre",
@@ -262,7 +262,7 @@
   {
     "slug": "sello-de-amor-con-retorno",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Sello de amor con retorno",
     "nivel": "Supremo",
     "motivo": "corazon",
@@ -286,7 +286,7 @@
   {
     "slug": "dulce-obsesion",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Dulce obsesión",
     "nivel": "Supremo",
     "motivo": "ojo",
@@ -308,7 +308,7 @@
   {
     "slug": "retorno-completo",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Retorno completo",
     "nivel": "Supremo",
     "motivo": "llave",
@@ -330,7 +330,7 @@
   {
     "slug": "endulzamiento-supremo",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Endulzamiento supremo",
     "nivel": "Supremo",
     "motivo": "miel",
@@ -351,7 +351,7 @@
   {
     "slug": "rechaza-mozas",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Rechaza mozas",
     "nivel": "Supremo",
     "motivo": "escudo",
@@ -372,7 +372,7 @@
   {
     "slug": "restauracion-completa-de-vinculo",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Restauración completa de vínculo",
     "nivel": "Supremo",
     "motivo": "amarre",
@@ -392,7 +392,7 @@
   {
     "slug": "blindaje-de-vinculo",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Blindaje de vínculo",
     "nivel": "Supremo",
     "motivo": "candado",
@@ -412,7 +412,7 @@
   {
     "slug": "abre-camino-de-amor-supremo",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Abre camino de amor supremo",
     "nivel": "Supremo",
     "motivo": "llave",
@@ -433,7 +433,7 @@
   {
     "slug": "triple-humillado",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Triple humillado",
     "nivel": "Supremo",
     "motivo": "espejo",
@@ -454,7 +454,7 @@
   {
     "slug": "potencializador-de-sentimientos",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Potencializador de sentimientos",
     "nivel": "Supremo",
     "motivo": "rosa",
@@ -471,7 +471,7 @@
   {
     "slug": "novena-personalizada",
     "tipo": "servicio",
-    "seccion": "supremo",
+    "seccion": "amor",
     "nombre": "Novena personalizada",
     "nivel": "VIP",
     "motivo": "luna",
@@ -550,7 +550,7 @@
   {
     "slug": "corte-de-lazos",
     "tipo": "servicio",
-    "seccion": "cortes",
+    "seccion": "amor",
     "nombre": "Corte de lazos",
     "nivel": "Supremo",
     "motivo": "tijeras",
@@ -572,7 +572,7 @@
   {
     "slug": "separacion",
     "tipo": "servicio",
-    "seccion": "cortes",
+    "seccion": "amor",
     "nombre": "Separación",
     "nivel": "Supremo",
     "motivo": "tijeras",
@@ -589,7 +589,7 @@
   {
     "slug": "separacion-suprema",
     "tipo": "servicio",
-    "seccion": "cortes",
+    "seccion": "amor",
     "nombre": "Separación suprema",
     "nivel": "Supremo",
     "motivo": "tijeras",
@@ -1137,7 +1137,7 @@
   {
     "slug": "blindaje-energetico",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Blindaje energético",
     "nivel": "Sencillo",
     "motivo": "escudo",
@@ -1154,7 +1154,7 @@
   {
     "slug": "proteccion-laboral",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Protección laboral",
     "nivel": "Sencillo",
     "motivo": "maletin",
@@ -1171,7 +1171,7 @@
   {
     "slug": "ritual-de-proteccion-energetica-para-mascotas",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Ritual de protección energética para mascotas",
     "nivel": "Sencillo",
     "motivo": "pata",
@@ -1188,7 +1188,7 @@
   {
     "slug": "consagracion-de-amuletos",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Consagración de amuletos",
     "nivel": "Sencillo",
     "motivo": "cuarzo",
@@ -1205,7 +1205,7 @@
   {
     "slug": "despedida-eterna",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Despedida eterna",
     "nivel": "Supremo",
     "motivo": "tijeras",
@@ -1226,7 +1226,7 @@
   {
     "slug": "blindaje-supremo",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Blindaje supremo",
     "nivel": "Supremo",
     "motivo": "escudo",
@@ -1243,7 +1243,7 @@
   {
     "slug": "proteccion-defensiva",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Protección defensiva",
     "nivel": "Supremo",
     "motivo": "escudo",
@@ -1260,7 +1260,7 @@
   {
     "slug": "volteo-de-espejo",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Volteo de espejo",
     "nivel": "Supremo",
     "motivo": "espejo",
@@ -1277,7 +1277,7 @@
   {
     "slug": "botella-de-bruja",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Botella de bruja",
     "nivel": "Supremo",
     "motivo": "botella",
@@ -1294,7 +1294,7 @@
   {
     "slug": "proteccion-familiar",
     "tipo": "servicio",
-    "seccion": "proteccion",
+    "seccion": "limpieza",
     "nombre": "Protección familiar",
     "nivel": "Supremo",
     "motivo": "escudo",
@@ -1311,9 +1311,9 @@
   {
     "slug": "vela-de-refuerzo",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "amor",
     "nombre": "Vela de refuerzo",
-    "nivel": "Amor",
+    "nivel": "Vela",
     "motivo": "vela",
     "precio_usd": 30,
     "precio_cop": 60000,
@@ -1328,9 +1328,9 @@
   {
     "slug": "vela-de-refuerzo-vip",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "amor",
     "nombre": "Vela de refuerzo VIP",
-    "nivel": "VIP",
+    "nivel": "Vela",
     "motivo": "velas",
     "precio_usd": 50,
     "precio_cop": 150000,
@@ -1345,9 +1345,9 @@
   {
     "slug": "vela-de-refuerzo-super-vip",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "amor",
     "nombre": "Vela de refuerzo super VIP",
-    "nivel": "VIP",
+    "nivel": "Vela",
     "motivo": "velas",
     "precio_usd": 100,
     "precio_cop": 360000,
@@ -1362,9 +1362,9 @@
   {
     "slug": "velita-potencializadora-amor-propio",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "amorpropio",
     "nombre": "Velita potencializadora (amor propio)",
-    "nivel": "Amor propio",
+    "nivel": "Vela",
     "motivo": "vela",
     "precio_usd": 20,
     "precio_cop": 50000,
@@ -1386,9 +1386,9 @@
   {
     "slug": "velita-potencializadora-suprema-amor-propio",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "amorpropio",
     "nombre": "Velita potencializadora suprema (amor propio)",
-    "nivel": "Amor propio",
+    "nivel": "Vela",
     "motivo": "vela",
     "precio_usd": 30,
     "precio_cop": 80000,
@@ -1403,9 +1403,9 @@
   {
     "slug": "velon-de-los-deseos",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "amorpropio",
     "nombre": "Velón de los deseos",
-    "nivel": "Amor propio",
+    "nivel": "Vela",
     "motivo": "velas",
     "precio_usd": 50,
     "precio_cop": 180000,
@@ -1420,9 +1420,9 @@
   {
     "slug": "velita-potencializadora-abundancia",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "abundancia",
     "nombre": "Velita potencializadora (abundancia)",
-    "nivel": "Abundancia",
+    "nivel": "Vela",
     "motivo": "vela",
     "precio_usd": 30,
     "precio_cop": 60000,
@@ -1437,9 +1437,9 @@
   {
     "slug": "vela-potencializadora-suprema-abundancia",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "abundancia",
     "nombre": "Vela potencializadora suprema (abundancia)",
-    "nivel": "Abundancia",
+    "nivel": "Vela",
     "motivo": "velas",
     "precio_usd": 50,
     "precio_cop": 150000,
@@ -1454,9 +1454,9 @@
   {
     "slug": "velita-potencializadora-de-limpieza",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "limpieza",
     "nombre": "Velita potencializadora de limpieza",
-    "nivel": "Limpieza",
+    "nivel": "Vela",
     "motivo": "vela",
     "precio_usd": 20,
     "precio_cop": 50000,
@@ -1471,9 +1471,9 @@
   {
     "slug": "velita-potencializadora-suprema-limpieza",
     "tipo": "servicio",
-    "seccion": "velas",
+    "seccion": "limpieza",
     "nombre": "Velita potencializadora suprema (limpieza)",
-    "nivel": "Limpieza",
+    "nivel": "Vela",
     "motivo": "vela",
     "precio_usd": 30,
     "precio_cop": 80000,
@@ -1488,7 +1488,7 @@
   {
     "slug": "ritual-personalizado-de-amor",
     "tipo": "servicio",
-    "seccion": "personalizado",
+    "seccion": "amor",
     "nombre": "Ritual personalizado de amor",
     "nivel": "VIP",
     "motivo": "corazon",
@@ -1505,7 +1505,7 @@
   {
     "slug": "ritual-personalizado-de-amor-propio",
     "tipo": "servicio",
-    "seccion": "personalizado",
+    "seccion": "amorpropio",
     "nombre": "Ritual personalizado de amor propio",
     "nivel": "VIP",
     "motivo": "rosa",
@@ -1522,7 +1522,7 @@
   {
     "slug": "ritual-personalizado-de-limpieza-y-proteccion",
     "tipo": "servicio",
-    "seccion": "personalizado",
+    "seccion": "limpieza",
     "nombre": "Ritual personalizado de limpieza y protección",
     "nivel": "VIP",
     "motivo": "escudo",
@@ -1539,7 +1539,7 @@
   {
     "slug": "ritual-personalizado-de-abundancia",
     "tipo": "servicio",
-    "seccion": "personalizado",
+    "seccion": "abundancia",
     "nombre": "Ritual personalizado de abundancia",
     "nivel": "VIP",
     "motivo": "monedas",
@@ -1556,7 +1556,7 @@
   {
     "slug": "lectura-de-tarot",
     "tipo": "servicio",
-    "seccion": "tarot",
+    "seccion": "amor",
     "nombre": "Lectura de tarot",
     "nivel": "Lectura",
     "motivo": "tarot",

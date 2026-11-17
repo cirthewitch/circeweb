@@ -51,13 +51,10 @@
   ],
   "velaPara": {
     "amor": "Vela de refuerzo",
-    "supremo": "Vela de refuerzo VIP",
     "amarres": "Vela de refuerzo super VIP",
-    "cortes": "Vela de refuerzo",
     "amorpropio": "Velita potencializadora (amor propio)",
     "abundancia": "Velita potencializadora (abundancia)",
-    "limpieza": "Velita potencializadora de limpieza",
-    "proteccion": "Velita potencializadora de limpieza"
+    "limpieza": "Velita potencializadora de limpieza"
   },
   "situaciones": {
     "amor": [
@@ -65,24 +62,17 @@
       "Hay otra persona",
       "Quiero que regrese",
       "Peleamos mucho",
-      "Quiero fortalecer la relación"
-    ],
-    "supremo": [
-      "Se alejó de mí",
-      "Hay otra persona",
-      "Quiero que regrese",
-      "Es un caso difícil"
+      "Quiero fortalecer la relación",
+      "Es un caso difícil",
+      "Quiero soltar a alguien",
+      "Quiero separar una relación",
+      "No puedo olvidar"
     ],
     "amarres": [
       "Quiero una unión firme",
       "Hay otra persona",
       "Quiero formalizar",
       "Es un caso difícil"
-    ],
-    "cortes": [
-      "Quiero soltar a alguien",
-      "Quiero separar una relación",
-      "No puedo olvidar"
     ],
     "amorpropio": [
       "Autoestima baja",
@@ -100,9 +90,7 @@
       "Siento mala energía",
       "Creo que me hicieron un trabajo",
       "Mala racha",
-      "Mi mascota está rara"
-    ],
-    "proteccion": [
+      "Mi mascota está rara",
       "Siento envidia",
       "Quiero proteger mi hogar",
       "Quiero proteger mi trabajo",

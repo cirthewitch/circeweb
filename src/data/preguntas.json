@@ -139,16 +139,14 @@
     "aplica_a": [
       "general",
       "seccion:amor",
-      "seccion:supremo",
-      "seccion:amarres",
-      "seccion:tarot"
+      "seccion:amarres"
     ],
     "emocion": "mistica",
     "acciones": [
       {
         "tipo": "catalogo",
         "etiqueta": "Ver tarot",
-        "seccion": "tarot"
+        "seccion": "amor"
       }
     ],
     "orden": 7
@@ -165,7 +163,6 @@
     ],
     "aplica_a": [
       "seccion:amor",
-      "seccion:supremo",
       "seccion:amarres"
     ],
     "emocion": "mistica",
@@ -184,15 +181,13 @@
       "potenciar"
     ],
     "aplica_a": [
-      "general",
-      "seccion:velas"
+      "general"
     ],
     "emocion": "mistica",
     "acciones": [
       {
         "tipo": "catalogo",
-        "etiqueta": "Ver velas",
-        "seccion": "velas"
+        "etiqueta": "Ver velas"
       }
     ],
     "orden": 9
@@ -208,15 +203,13 @@
       "caso especial"
     ],
     "aplica_a": [
-      "general",
-      "seccion:personalizado"
+      "general"
     ],
     "emocion": "guino",
     "acciones": [
       {
         "tipo": "catalogo",
-        "etiqueta": "Ver rituales personalizados",
-        "seccion": "personalizado"
+        "etiqueta": "Ver rituales personalizados"
       }
     ],
     "orden": 10
@@ -516,7 +509,7 @@
     ],
     "aplica_a": [
       "general",
-      "seccion:tarot"
+      "seccion:amor"
     ],
     "emocion": "hablando",
     "acciones": [],
@@ -532,7 +525,6 @@
       "descuenta"
     ],
     "aplica_a": [
-      "seccion:tarot",
       "seccion:amor"
     ],
     "emocion": "hablando",
@@ -604,8 +596,7 @@
     ],
     "aplica_a": [
       "seccion:amor",
-      "seccion:amarres",
-      "seccion:supremo"
+      "seccion:amarres"
     ],
     "emocion": "hablando",
     "acciones": [],
@@ -736,7 +727,7 @@
       "cada cuanto"
     ],
     "aplica_a": [
-      "seccion:velas"
+      "general"
     ],
     "emocion": "hablando",
     "acciones": [],
@@ -754,8 +745,7 @@
     ],
     "aplica_a": [
       "seccion:amor",
-      "seccion:amarres",
-      "seccion:supremo"
+      "seccion:amarres"
     ],
     "emocion": "hablando",
     "acciones": [],

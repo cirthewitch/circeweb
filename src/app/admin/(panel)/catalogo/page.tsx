@@ -65,8 +65,8 @@ export default async function CatalogoAdmin({ searchParams }: { searchParams: Pr
                   {grupos.map((g) => <option key={g.id} value={g.id}>{g.nombre}</option>)}
                 </select>
               </label>
-              <label className="afl">Nivel<input name="nivel" className="ain" defaultValue={editando.nivel} placeholder="Sencillo, Supremo, VIP…" list="niveles" /></label>
-              <datalist id="niveles">{["Sencillo", "Supremo", "VIP", "Amarre", "Lectura"].map((n) => <option key={n} value={n} />)}</datalist>
+              <label className="afl">Nivel<input name="nivel" className="ain" defaultValue={editando.nivel} placeholder="Sencillo, Supremo, VIP, Vela…" list="niveles" /></label>
+              <datalist id="niveles">{["Sencillo", "Supremo", "Amarre", "VIP", "Vela", "Lectura"].map((n) => <option key={n} value={n} />)}</datalist>
               <label className="afl">Precio USD<input name="precio_usd" inputMode="numeric" className="ain" defaultValue={editando.precio_usd ?? ""} /></label>
               <label className="afl">Precio COP<input name="precio_cop" inputMode="numeric" className="ain" defaultValue={editando.precio_cop ?? ""} placeholder="Ej. 180000" /></label>
               <label className="afl" style={{ gridColumn: "1 / -1" }}>Texto de precio (opcional)<input name="precio_texto" className="ain" defaultValue={editando.precio_texto ?? ""} placeholder="Reemplaza los precios, ej. «Desde 300 USD»" /></label>

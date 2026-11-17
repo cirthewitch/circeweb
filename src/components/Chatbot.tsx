@@ -152,7 +152,7 @@ export function Chatbot() {
                   a.tipo === "whatsapp" ? (
                     <a key={k} href={enlaceWhatsapp(wa, a.mensaje)} target="_blank" rel="noopener" className="cact" onClick={() => registrar("whatsapp", { origen: "chat" })} style={{ background: "#1F6B4A", borderColor: "#2E8A62", color: "#F2FFF8" }}>{a.etiqueta}</a>
                   ) : (
-                    <Link key={k} href={a.seccion ? `/catalogo?seccion=${a.seccion}` : "/catalogo"} className="cact">{a.etiqueta}</Link>
+                    <Link key={k} href={a.seccion ? `/catalogo/${a.seccion}` : "/catalogo"} className="cact">{a.etiqueta}</Link>
                   ),
                 )}
               </div>

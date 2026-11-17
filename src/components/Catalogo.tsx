@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { useDeferredValue, useMemo, useState } from "react";
 import { buscarItems, indiceItems } from "@/lib/catalogo";
-import { precio } from "@/lib/precios";
-import { BotonChat, BotonSolicitar, EnlaceWhatsapp } from "./botones";
-import { Motivo } from "./Motivo";
+import { NIVELES } from "@/lib/niveles";
+import { BotonChat, EnlaceSeccion, EnlaceWhatsapp } from "./botones";
+import { Motivo, colorMotivo } from "./Motivo";
 import { useSitio } from "./proveedor";
+import { REJILLA, TarjetaItem } from "./TarjetaItem";
 
 interface Props {
-  inicial: { q?: string; seccion?: string; tipo?: string };
+  inicial: { q?: string; tipo?: string };
 }
 
 const chip = (on: boolean) =>
@@ -26,44 +26,29 @@ function guardarUrl(p: Record<string, string>) {
   window.history.replaceState(window.history.state, "", url);
 }
 
+const nombreNivel = (n: string) => NIVELES.find((x) => x.id === n)?.titulo.replace(/^Rituales /, "") ?? n;
+
 export function Catalogo({ inicial }: Props) {
   const { sitio, moneda, registrar } = useSitio();
   const [tipo, setTipo] = useState<"servicio" | "producto">(inicial.tipo === "productos" ? "producto" : "servicio");
   const [q, setQ] = useState(inicial.q ?? "");
-  const [cat, setCat] = useState(inicial.seccion ?? "todos");
-  const [nivel, setNivel] = useState("todos");
+  const [cat, setCat] = useState("todos");
   const consulta = useDeferredValue(q);
 
   const esServ = tipo === "servicio";
-  const base = useMemo(() => sitio.items.filter((i) => i.tipo === tipo), [sitio.items, tipo]);
-  const indice = useMemo(() => indiceItems(base, sitio.secciones), [base, sitio.secciones]);
-  const grupos = esServ ? sitio.secciones : sitio.categorias;
-  const grupoActual = grupos.find((g) => g.id === cat);
-  const seccionActual = esServ ? sitio.secciones.find((s) => s.id === cat) : undefined;
-
-  const filtrados = useMemo(() => {
-    let lista = esServ && consulta.trim().length >= 2 ? buscarItems(indice, consulta) : base;
-    lista = lista.filter((i) => cat === "todos" || i.seccion === cat);
-    return lista;
-  }, [esServ, consulta, indice, base, cat]);
-  const niveles = esServ ? Array.from(new Set(filtrados.map((i) => i.nivel).filter(Boolean))) : [];
-  const visibles = nivel === "todos" ? filtrados : filtrados.filter((i) => i.nivel === nivel);
+  const servicios = useMemo(() => sitio.items.filter((i) => i.tipo === "servicio"), [sitio.items]);
+  const productos = useMemo(() => sitio.items.filter((i) => i.tipo === "producto"), [sitio.items]);
+  const indice = useMemo(() => indiceItems(servicios, sitio.secciones), [servicios, sitio.secciones]);
+  const hayQ = esServ && consulta.trim().length >= 2;
+  const hallados = useMemo(() => (hayQ ? buscarItems(indice, consulta) : []), [hayQ, indice, consulta]);
+  const prodVisibles = cat === "todos" ? productos : productos.filter((i) => i.seccion === cat);
+  const nombreSec = new Map(sitio.secciones.map((s) => [s.id, s.corto]));
 
   const elegirTipo = (t: "servicio" | "producto") => {
-    setTipo(t); setCat("todos"); setNivel("todos");
-    guardarUrl({ tipo: t === "producto" ? "productos" : "", seccion: "", q: t === "producto" ? "" : q });
-  };
-  const elegirCat = (id: string) => {
-    setCat(id); setNivel("todos");
-    guardarUrl({ seccion: id === "todos" ? "" : id });
-    if (id !== "todos" && esServ) registrar("clic_seccion", { origen: "catalogo", seccion: id });
+    setTipo(t); setCat("todos");
+    guardarUrl({ tipo: t === "producto" ? "productos" : "", q: t === "producto" ? "" : q });
   };
 
-  const titulo = esServ ? (seccionActual?.nombre ?? "Todos los servicios") : (grupoActual?.nombre ?? "Objetos con intención");
-  const sub = esServ
-    ? (seccionActual?.descripcion ?? "Rituales sencillos, supremos y personalizados, con precio en dólares o pesos colombianos.")
-    : "Pócimas, pulseras, amuletos y cuarzos preparados por Circe.";
-  const hayQ = esServ && consulta.trim().length >= 2;
   const segmento = (on: boolean) => ({ height: 40, padding: "0 20px", border: 0, borderRadius: 999, font: "600 13px Manrope, sans-serif", cursor: "pointer", background: on ? "#EDE4D7" : "transparent", color: on ? "#11100F" : "#CFC6B9" });
 
   return (
@@ -75,8 +60,10 @@ export function Catalogo({ inicial }: Props) {
             <button type="button" role="tab" aria-selected={esServ} onClick={() => elegirTipo("servicio")} style={segmento(esServ)}>Servicios</button>
             <button type="button" role="tab" aria-selected={!esServ} onClick={() => elegirTipo("producto")} style={segmento(!esServ)}>Productos</button>
           </div>
-          <h1 className="h2x grad" style={{ fontSize: "clamp(48px, 7vw, 104px)" }}>{titulo}</h1>
-          <p className="lead" style={{ maxWidth: 620 }}>{sub}</p>
+          <h1 className="h2x grad" style={{ fontSize: "clamp(48px, 7vw, 104px)" }}>{esServ ? "Elige tu camino" : "Objetos con intención"}</h1>
+          <p className="lead" style={{ maxWidth: 620 }}>
+            {esServ ? "Cinco secciones, cada una con su propio catálogo. O escribe lo que necesitas y te muestro los trabajos que encajan." : "Pócimas, pulseras, amuletos y cuarzos preparados por Circe."}
+          </p>
           {esServ && (
             <form role="search" style={{ position: "relative", width: "min(640px, 100%)", marginTop: 8 }} onSubmit={(e) => { e.preventDefault(); registrar("busqueda", { origen: "catalogo" }); }}>
               <label htmlFor="cq" className="sr">Buscar en el catálogo</label>
@@ -89,61 +76,60 @@ export function Catalogo({ inicial }: Props) {
       </header>
 
       <div className="wrap" style={{ flex: 1, paddingBottom: 40, display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ position: "sticky", top: "var(--nav-h)", zIndex: 5, marginInline: "calc(-1 * clamp(20px, 5vw, 64px))", padding: "10px clamp(20px, 5vw, 64px)", background: "rgba(12,11,10,.72)", WebkitBackdropFilter: "blur(20px)", backdropFilter: "blur(20px)", display: "flex", alignItems: "center", gap: 12 }}>
-          <div className="chips" style={{ flex: 1, minWidth: 0, display: "flex", gap: 8, overflowX: "auto" }}>
-            {[{ id: "todos", nombre: "Todos" }, ...grupos].map((g) => (
-              <button key={g.id} type="button" className="chip" aria-pressed={cat === g.id} onClick={() => elegirCat(g.id)} style={chip(cat === g.id)}>{g.nombre}</button>
-            ))}
-          </div>
-          {niveles.length > 1 && (
-            <>
-              <label htmlFor="cn" className="sr">Nivel</label>
-              <select id="cn" value={nivel} onChange={(e) => setNivel(e.target.value)} style={{ flex: "none", height: 44, padding: "0 14px", background: "rgba(237,228,215,.06)", border: "1px solid rgba(237,228,215,.14)", borderRadius: 999, color: "#EDE4D7", font: "600 13px Manrope, sans-serif" }}>
-                <option value="todos">Todos los niveles</option>
-                {niveles.map((n) => <option key={n} value={n}>{n}</option>)}
-              </select>
-            </>
-          )}
-        </div>
-        <span style={{ fontSize: 13, color: "#A8A096" }} aria-live="polite">
-          {visibles.length} {visibles.length === 1 ? "resultado" : "resultados"}{hayQ ? ` para «${consulta.trim()}»` : ""} · Precios en {moneda === "cop" ? "pesos colombianos" : "dólares"}
-        </span>
-
-        {visibles.length === 0 ? (
-          <div className="tile still" style={{ padding: "56px 20px", display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
-            <p style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontStyle: "italic" }}>No encontré trabajos con esas palabras.</p>
-            <p style={{ margin: 0, fontSize: 15, color: "#A8A096" }}>Cuéntame tu caso y te digo qué ritual te conviene.</p>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10 }}>
-              <BotonChat ctx={seccionActual ? { seccion: seccionActual.id } : {}} className="btng sm">Preguntarle a Circe</BotonChat>
-              <EnlaceWhatsapp texto={`Hola Circe, busco algo para: ${q}`} className="btn sm" origen="catalogo">Escribir por WhatsApp</EnlaceWhatsapp>
-            </div>
-          </div>
-        ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(250px, calc(50% - 6px)), 1fr))", gap: "clamp(10px, 1.6vw, 18px)" }}>
-            {visibles.map((s) => (
-              <div key={s.id} className="tile" style={{ display: "flex", flexDirection: "column", borderRadius: 24 }}>
-                {esServ && <Link href={`/servicio/${s.slug}`} className="cover" aria-label={s.nombre} />}
-                <div className="art" style={{ aspectRatio: "1 / 1" }}>
-                  <div className="glow" />
-                  {s.imagen_url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={s.imagen_url} alt="" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-                  ) : (
-                    <Motivo nombre={s.motivo} grosor={1.4} style={{ width: "54%" }} />
-                  )}
-                </div>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6, padding: "0 clamp(14px, 1.6vw, 20px) clamp(14px, 1.6vw, 20px)" }}>
-                  <span className="tag" style={{ fontSize: 10 }}>{s.nivel}</span>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px, 1.9vw, 26px)", lineHeight: 1.05 }}>{s.nombre}</span>
-                  <span className="clampd" style={{ fontSize: 13, lineHeight: 1.5, color: "#A8A096" }}>{s.descripcion}</span>
-                  <div style={{ marginTop: "auto", paddingTop: 10, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                    <span className="price" style={{ fontSize: 14, color: "#D9C9A8" }}>{precio(s, moneda)}</span>
-                    <BotonSolicitar item={s} origen="catalogo" className="btn sm above" />
+        {esServ && !hayQ && (
+          <div className="secs">
+            {sitio.secciones.map((s) => {
+              const lista = servicios.filter((x) => x.seccion === s.id);
+              const usd = lista.map((x) => x.precio_usd).filter((v): v is number => Boolean(v));
+              return (
+                <div key={s.id} className="tile" style={{ minHeight: 230, background: `radial-gradient(90% 80% at 85% 100%, ${colorMotivo(s.motivo)}30 0%, transparent 60%), linear-gradient(160deg,#1E1518 0%,#141011 60%,#100D0D 100%)` }}>
+                  <EnlaceSeccion seccion={s.id} origen="catalogo" className="cover" ariaLabel={`Ver ${s.nombre}`} />
+                  <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column", gap: 8, padding: "clamp(20px, 2.4vw, 30px)" }}>
+                    <span className="tag" style={{ fontSize: 10 }}>{lista.length} {lista.length === 1 ? "trabajo" : "trabajos"}{usd.length ? ` · desde ${Math.min(...usd)} USD` : ""}</span>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(30px, 3vw, 42px)", lineHeight: 1, maxWidth: "75%" }}>{s.nombre}</span>
+                    <span style={{ fontSize: 14, lineHeight: 1.5, color: "#CFC6B9", maxWidth: "70%" }}>{s.descripcion}</span>
+                    <span className="lnk" style={{ marginTop: "auto", paddingTop: 12, fontSize: 14 }}>Ver catálogo</span>
                   </div>
+                  <Motivo nombre={s.motivo} grosor={1.2} style={{ position: "absolute", right: "-4%", bottom: "-8%", width: "min(40%, 190px)", pointerEvents: "none", filter: "drop-shadow(0 20px 30px rgba(0,0,0,.6))" }} />
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {hayQ && (
+          <>
+            <span style={{ fontSize: 13, color: "#A8A096" }} aria-live="polite">
+              {hallados.length} {hallados.length === 1 ? "resultado" : "resultados"} para «{consulta.trim()}» · Precios en {moneda === "cop" ? "pesos colombianos" : "dólares"}
+            </span>
+            {hallados.length === 0 ? (
+              <div className="tile still" style={{ padding: "56px 20px", display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
+                <p style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontStyle: "italic" }}>No encontré trabajos con esas palabras.</p>
+                <p style={{ margin: 0, fontSize: 15, color: "#A8A096" }}>Cuéntame tu caso y te digo qué ritual te conviene.</p>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10 }}>
+                  <BotonChat className="btng sm">Preguntarle a Circe</BotonChat>
+                  <EnlaceWhatsapp texto={`Hola Circe, busco algo para: ${q}`} className="btn sm" origen="catalogo">Escribir por WhatsApp</EnlaceWhatsapp>
                 </div>
               </div>
-            ))}
-          </div>
+            ) : (
+              <div style={REJILLA}>
+                {hallados.map((s) => <TarjetaItem key={s.id} item={s} origen="catalogo" etiqueta={`${nombreSec.get(s.seccion) ?? ""} · ${nombreNivel(s.nivel)}`} />)}
+              </div>
+            )}
+          </>
+        )}
+
+        {!esServ && (
+          <>
+            <div className="chips" style={{ display: "flex", gap: 8, overflowX: "auto" }}>
+              {[{ id: "todos", nombre: "Todos" }, ...sitio.categorias].map((g) => (
+                <button key={g.id} type="button" className="chip" aria-pressed={cat === g.id} onClick={() => setCat(g.id)} style={chip(cat === g.id)}>{g.nombre}</button>
+              ))}
+            </div>
+            <div style={REJILLA}>
+              {prodVisibles.map((s) => <TarjetaItem key={s.id} item={s} origen="catalogo" etiqueta={sitio.categorias.find((c) => c.id === s.seccion)?.nombre} />)}
+            </div>
+          </>
         )}
       </div>
     </div>

@@ -10,7 +10,7 @@ import { Intro } from "./Intro";
 import { Motivo } from "./Motivo";
 import { useSitio } from "./proveedor";
 
-const INTENCIONES = ["amor", "amarres", "abundancia", "limpieza", "proteccion", "amorpropio"];
+const INTENCIONES = ["amor", "amarres", "abundancia", "limpieza", "amorpropio"];
 let yaAnimado = false;
 
 export function Hero() {
@@ -34,7 +34,7 @@ export function Hero() {
 
   const verMas = () => {
     if (escrito) registrar("busqueda", { origen: "inicio" });
-    router.push(escrito ? `/catalogo?q=${encodeURIComponent(q.trim())}` : `/catalogo?seccion=${sec?.id ?? ""}`);
+    router.push(escrito ? `/catalogo?q=${encodeURIComponent(q.trim())}` : sec ? `/catalogo/${sec.id}` : "/catalogo");
   };
 
   return (

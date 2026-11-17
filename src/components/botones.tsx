@@ -29,7 +29,7 @@ export function BotonChat({ ctx, className = "btng", children }: { ctx?: Context
 export function EnlaceSeccion({ seccion, origen, className, style, children, ariaLabel }: { seccion: string; origen: string; className?: string; style?: CSSProperties; children?: ReactNode; ariaLabel?: string }) {
   const { registrar } = useSitio();
   return (
-    <Link href={`/catalogo?seccion=${seccion}`} className={className} style={style} aria-label={ariaLabel} onClick={() => registrar("clic_seccion", { origen, seccion })}>
+    <Link href={`/catalogo/${seccion}`} className={className} style={style} aria-label={ariaLabel} onClick={() => registrar("clic_seccion", { origen, seccion })}>
       {children}
     </Link>
   );
