@@ -1,23 +1,5 @@
 [
   {
-    "clave": "garantia",
-    "pregunta": "¿Los trabajos tienen garantía?",
-    "respuesta": "Todo trabajo energético cuenta con una garantía de tres meses, siempre y cuando se haya realizado al menos una vela de refuerzo y haya actualizaciones constantes sobre el avance del trabajo. Si se cumplen estos requisitos y no se han visto resultados, haré otro ritual por mi cuenta. De lo contrario, no me hago responsable.",
-    "palabras_clave": [
-      "garantia",
-      "garantizado",
-      "si no funciona",
-      "resultados",
-      "seguro"
-    ],
-    "aplica_a": [
-      "general"
-    ],
-    "emocion": "hablando",
-    "acciones": [],
-    "orden": 0
-  },
-  {
     "clave": "pago-adelantado",
     "pregunta": "¿Cuándo se paga el trabajo?",
     "respuesta": "Todo trabajo se paga por adelantado al momento de apartar tu cupo.",

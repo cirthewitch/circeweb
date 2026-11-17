@@ -117,7 +117,7 @@ export default async function Inicio() {
               ["Elige tu servicio", "Explora el catálogo por sección o pregúntale a Circe en el chat."],
               ["Cuéntale tu caso", "Un resumen breve que llega directo a su WhatsApp."],
               ["Aparta tu cupo", "El trabajo se paga por adelantado. Los rituales de amor llevan lectura previa."],
-              ["Ritual y seguimiento", "Le cuentas cómo avanza; con vela de refuerzo tienes garantía de tres meses."],
+              ["Ritual y seguimiento", "Le cuentas cómo avanza y sigues sus indicaciones."],
             ].map(([t, d], i) => (
               <li key={t} className="tile still" style={{ padding: "28px 24px", display: "flex", flexDirection: "column", gap: 14, minHeight: 260 }}>
                 <span className="dsp grad" style={{ fontSize: 88 }}>{i + 1}</span>
@@ -130,7 +130,7 @@ export default async function Inicio() {
       </section>
 
       {/* ============ REGLAS CLARAS ============ */}
-      <section id="garantia" className="sec">
+      <section id="reglas" className="sec">
         <div className="wrap">
           <div className="shead rv">
             <span className="tag">Reglas claras</span>
@@ -138,7 +138,6 @@ export default async function Inicio() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 16 }}>
             {[
-              ["3 meses", "de garantía", "Si hiciste al menos una vela de refuerzo y me mantuviste al tanto del avance y no hay resultados, hago otro ritual por mi cuenta."],
               ["USD · COP", "Pago por adelantado", "Todo trabajo se paga al apartar tu cupo. Ves el precio en tu moneda antes de pedir."],
               ["Sin", "devoluciones", "Cada trabajo requiere materiales, tiempo y energía; una vez hecho el pago se pone en marcha."],
             ].map(([g, t, d]) => (

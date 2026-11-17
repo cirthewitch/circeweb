@@ -91,7 +91,6 @@ export default async function PaginaServicio({ params }: Props) {
               </div>
             )}
             <div className="tile still rv" style={{ padding: 28, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(150px, 100%), 1fr))", gap: 20 }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}><span className="dsp grad" style={{ fontSize: 40 }}>3 meses</span><span style={{ fontSize: 14, lineHeight: 1.5, color: "#A8A096" }}>de garantía con vela de refuerzo y seguimiento.</span></div>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}><span className="dsp grad" style={{ fontSize: 40 }}>Discreción</span><span style={{ fontSize: 14, lineHeight: 1.5, color: "#A8A096" }}>Tu identidad y tu caso no se comparten.</span></div>
             </div>
           </div>
@@ -138,7 +137,7 @@ export default async function PaginaServicio({ params }: Props) {
             <div style={{ flex: "1 1 300px", minWidth: 0, display: "flex", flexDirection: "column", gap: 8 }}>
               <span className="tag">Potencia tu trabajo</span>
               <Link href={`/servicio/${vela.slug}`} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3vw, 38px)", color: "#EDE4D7", textDecoration: "none" }}>{vela.nombre}</Link>
-              <span style={{ fontSize: 15, lineHeight: 1.6, color: "#CFC6B9" }}>Acelera el trabajo o revitaliza su energía cuando pierde intensidad. Es requisito para la garantía.</span>
+              <span style={{ fontSize: 15, lineHeight: 1.6, color: "#CFC6B9" }}>Acelera el trabajo o revitaliza su energía cuando pierde intensidad.</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 10 }}>
               <PrecioItem item={vela} className="price" style={{ fontSize: 18 }} />

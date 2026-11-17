@@ -79,7 +79,7 @@ const SINONIMOS: Record<string, string[]> = {
   velita: ["vela", "refuerzo"],
   rapido: ["tarda", "tiempo"],
   demora: ["tarda", "tiempo"],
-  funciona: ["resultado", "garantia"],
+  funciona: ["resultado"],
 };
 
 export function normalizar(texto: string): string {
