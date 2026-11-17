@@ -185,3 +185,11 @@ export async function borrarPreguntaServicio(form: FormData) {
   publicar();
   redirect(`/admin/catalogo?id=${texto(form.get("item_id"))}#preguntas`);
 }
+
+// ---------- Refrescar toda la web ----------
+/** Para cuando se cambia algo directo en Supabase: vuelve a generar todas las páginas con los datos actuales. */
+export async function actualizarSitio() {
+  await exigirAdmin();
+  publicar();
+  redirect("/admin?actualizado=1");
+}

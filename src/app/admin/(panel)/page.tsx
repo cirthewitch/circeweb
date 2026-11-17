@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Barras, Encabezado } from "@/components/admin/Encabezado";
+import { actualizarSitio } from "../acciones";
 import { exigirAdmin } from "@/lib/admin";
 
 const ORIGENES: Record<string, string> = {
@@ -13,8 +14,9 @@ interface Stats {
   secciones: { etiqueta: string; n: number }[]; dias: { dia: string; n: number }[];
 }
 
-export default async function Resumen({ searchParams }: { searchParams: Promise<{ dias?: string }> }) {
-  const dias = (await searchParams).dias === "30" ? 30 : 7;
+export default async function Resumen({ searchParams }: { searchParams: Promise<{ dias?: string; actualizado?: string }> }) {
+  const sp = await searchParams;
+  const dias = sp.dias === "30" ? 30 : 7;
   const { db } = await exigirAdmin();
   const [{ data, error }, { data: secciones }, { data: ultimas }] = await Promise.all([
     db.rpc("estadisticas", { dias }),
@@ -32,6 +34,11 @@ export default async function Resumen({ searchParams }: { searchParams: Promise<
       <Encabezado titulo="Hola, Circe" sub={`Así se movió tu web en los últimos ${dias} días.`}>
         <div style={{ display: "flex", gap: 6 }}><Link href="/admin?dias=7" style={rango(7)}>7 días</Link><Link href="/admin?dias=30" style={rango(30)}>30 días</Link></div>
       </Encabezado>
+      {sp.actualizado && <div className="ok">Listo: todas las páginas de la web ya muestran los datos actuales.</div>}
+      <form action={actualizarSitio} className="acard" style={{ padding: "14px 18px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px 20px", borderRadius: 16 }}>
+        <span style={{ flex: "1 1 260px", fontSize: 13, color: "#A8A096", lineHeight: 1.5 }}>Lo que guardas en el panel se publica solo. Si cambiaste algo directamente en Supabase, usa este botón para que toda la web lo muestre ya.</span>
+        <button className="abtn">Actualizar la web</button>
+      </form>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(170px, 100%), 1fr))", gap: 12 }}>
         {[["Visitas", s.visitas], ["Clics en «Solicitar»", s.clics_solicitar], ["Solicitudes enviadas", s.solicitudes], ["Preguntas sin respuesta", s.sin_respuesta]].map(([l, v]) => (
           <div key={l} className="acard" style={{ padding: "18px 18px 16px", display: "flex", flexDirection: "column", gap: 8, borderRadius: 16 }}>
