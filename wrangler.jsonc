@@ -24,5 +24,11 @@
       "database_id": "80c6315c-3e4e-4926-b494-d5d1efed8645"
     }
   ],
+  // Valores públicos; deben coincidir con .env.production (que es el que se usa al compilar).
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://loshechizosdecirce.com",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_Uc8OtbLrEAfB2cQ-Ec2W0A_QoPPbUBl",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://zjdzqwjzlqcylefyvjez.supabase.co"
+  },
   "observability": { "enabled": true }
 }
