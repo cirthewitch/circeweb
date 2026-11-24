@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname : undefined;
 
@@ -9,3 +10,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// Permite usar los recursos de Cloudflare (KV, D1) en `npm run dev`.
+initOpenNextCloudflareForDev();

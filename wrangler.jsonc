@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "circeweb",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    // Debe coincidir con "name".
+    { "binding": "WORKER_SELF_REFERENCE", "service": "circeweb" }
+  ],
+  // Caché de páginas (ISR). Crear con: npx wrangler kv namespace create NEXT_INC_CACHE_KV
+  "kv_namespaces": [
+    { "binding": "NEXT_INC_CACHE_KV", "id": "4ae22dbf910942c099f7f689c01733b9" }
+  ],
+  // Etiquetas para revalidatePath (botón «Actualizar la web»). Crear con: npx wrangler d1 create circe-witch-cache
+  "d1_databases": [
+    {
+      "binding": "NEXT_TAG_CACHE_D1",
+      "database_name": "circe-witch-cache",
+      "database_id": "80c6315c-3e4e-4926-b494-d5d1efed8645"
+    }
+  ],
+  "observability": { "enabled": true }
+}

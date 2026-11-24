@@ -15,7 +15,7 @@ Web de Circe: catálogo de rituales con búsqueda inteligente, chatbot sin IA, s
    3. Authentication → Users → *Add user* con el correo y contraseña de la administradora.
    4. SQL Editor → `insert into public.admins (user_id) select id from auth.users where email = 'CORREO-DE-LA-ADMIN';`
 2. **Local**: `cp .env.example .env.local`, completa las dos claves de Supabase y ejecuta `npm install` y `npm run dev`.
-3. **Vercel**: importa el repositorio de GitHub y agrega las mismas variables (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` con la URL final).
+3. **Cloudflare**: ver «Despliegue en Cloudflare Workers» más abajo.
 4. En Supabase → Authentication → URL Configuration, pon la URL del sitio.
 
 ## Dónde se edita cada cosa (panel `/admin`)
@@ -43,7 +43,14 @@ supabase/               esquema con seguridad por filas y datos iniciales
 
 `npm run seed:sql` regenera `supabase/seed.sql` a partir de `src/data/`.
 
-## Más adelante: Cloudflare
+## Despliegue en Cloudflare Workers
 
-El proyecto no usa nada exclusivo de Vercel. Para pasarlo a Cloudflare se puede usar el adaptador
-[`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) o mantener Vercel y apuntar solo el dominio desde Cloudflare (DNS).
+Se usa el adaptador [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) (`wrangler.jsonc` y `open-next.config.ts`).
+Sin R2: las páginas se guardan en KV (`NEXT_INC_CACHE_KV`) y las marcas de «Actualizar la web» en D1 (`NEXT_TAG_CACHE_D1`).
+
+1. `npx wrangler login`
+2. `npx wrangler kv namespace create NEXT_INC_CACHE_KV` y `npx wrangler d1 create circe-witch-cache`; copia los dos `id` en `wrangler.jsonc`.
+3. Crea `.env.production` con las tres variables `NEXT_PUBLIC_*` (se incrustan al compilar; `NEXT_PUBLIC_SITE_URL` = dominio final).
+4. `npm run deploy` (compila, llena la caché y publica). `npm run preview` lo prueba en local con el entorno de Workers.
+5. Workers → `circeweb` → Settings → Domains & Routes → *Custom domain* (el dominio debe usar los nameservers de Cloudflare).
+6. Supabase → Authentication → URL Configuration: pon el dominio final.
