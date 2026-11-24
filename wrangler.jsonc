@@ -30,5 +30,10 @@
     "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_Uc8OtbLrEAfB2cQ-Ec2W0A_QoPPbUBl",
     "NEXT_PUBLIC_SUPABASE_URL": "https://zjdzqwjzlqcylefyvjez.supabase.co"
   },
+  // Dominios propios: Cloudflare crea el DNS y el certificado al desplegar.
+  "routes": [
+    { "pattern": "loshechizosdecirce.com", "custom_domain": true },
+    { "pattern": "www.loshechizosdecirce.com", "custom_domain": true }
+  ],
   "observability": { "enabled": true }
 }
