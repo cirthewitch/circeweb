@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { supabaseConfigurado } from "./supabase/config";
 import { clienteServidor } from "./supabase/servidor";
 
-/** Verifica en la base de datos que quien entra es administradora (el proxy solo revisa la sesión). */
+/** Verifica en la base de datos que quien entra es administradora (el middleware solo revisa la sesión). */
 export async function exigirAdmin() {
   if (!supabaseConfigurado) redirect("/admin/login");
   const db = await clienteServidor();

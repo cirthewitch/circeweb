@@ -12,7 +12,7 @@ export async function clienteServidor() {
         try {
           lista.forEach(({ name, value, options }) => almacen.set(name, value, options));
         } catch {
-          // En Server Components no se pueden escribir cookies; el proxy refresca la sesión.
+          // En Server Components no se pueden escribir cookies; el middleware refresca la sesión.
         }
       },
     },

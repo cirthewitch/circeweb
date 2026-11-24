@@ -1,8 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-/** Mantiene viva la sesión de la administradora en /admin (Next 16: proxy.ts). */
-export async function proxy(request: NextRequest) {
+/**
+ * Mantiene viva la sesión de la administradora en /admin.
+ * Se usa middleware.ts (runtime edge) y no proxy.ts (Node): en Cloudflare/OpenNext el middleware
+ * de Node es experimental y falla al leer cookies.
+ */
+export async function middleware(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) return NextResponse.next();
